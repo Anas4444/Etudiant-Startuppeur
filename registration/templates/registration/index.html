@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{% static './registration/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="back"></div>
+<div class="registration-form">
+  <header>
+    <h1>Sign Up</h1>
+    <p>Fill in all informations</p>
+  </header>
+  <form name="Inscription" method="post">
+    {% load widget_tweaks %}
+    <div class="input-section email-section">
+      {% render_field form.email class+="email" placeholder="ENTER YOUR E-MAIL" autocomplete="off" name="email" %}
+      <div class="animated-button"><span class="email_paper"><i class="fa fa-envelope-o"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
+    </div>
+    <div class="input-section password-section folded" style="padding-top:25%;">
+      {% render_field form.fullname class+="user" placeholder="ENTER YOUR FULL NAME" autocomplete="off" %}
+      <div class="animated-button"><span class="user_paper"><i class="fa fa-users"></i></span><span class="next-button user"><i class="fa fa-arrow-up"></i></span></div>
+    </div>
+    <div class="input-section repeat-password-section folded" style="padding-top:50%;">
+      {% render_field form.phone_number class+="phone" placeholder="ENTER YOUR PHONE" autocomplete="off" name="phone_number" %}
+      <div class="animated-button"><span class="phone_paper"><i class="fa fa-phone"></i></span class="next-button"><span><button class="fa fa-arrow-up" style="background: transparent;
+        color: #9999f8;
+        font-size: 25px;
+        font-weight: 100;
+        width: 100%;
+        border: 0;" type="submit"></button></span>
+      </div>
+      {% csrf_token %}
+    </div>
+  </form>
+</div> 
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="{% static './registration/script.js' %}"></script>
+
+</body>
+</html>

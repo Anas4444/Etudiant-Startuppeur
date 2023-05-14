@@ -1,0 +1,150 @@
+{% load static %}
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static './registration/style1.css' %}">
+  </head>
+  <body style="background-image: linear-gradient(to right top, #EC9F05,#FF4E00,#cfa605, #bf5900, #eb1212);background-position: center;">
+
+    <header style="padding: 7% 5% 4% 5%;">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12" style="text-align:center; color:white;">
+          <img style="width: 60%; height: 60%; display: block; margin-left: auto; margin-right: auto;" src="{% static 'registration/logo.png' %}" alt="FSN"> 
+          
+          <h1>Inscription</h1>
+          <p>Bienvenue sur la page d'inscription, veuillez remplir les informations ci-dessous</p>
+        </div>
+      </div>
+      <div class="row" style="max-width: 60%; min-width: 50%;">
+        <div class="col l12 m12 s12" style="padding: 2% 2% 2% 2%; border: solid 2% white;
+          background-color: white;-webkit-box-shadow: 3% 4% 4% -2% rgba(0,0,0,0.75);
+          -moz-box-shadow: 3% 4% 4% -2% rgba(0,0,0,0.75);
+          box-shadow: 3% 4% 4% -2% rgba(0,0,0,0.75);">
+          <form name="inscription" id="inscription" method="POST">
+            {% csrf_token %}
+            {% load widget_tweaks %}
+            <!-- Champ Nom et Prénom !-->
+            <div class="input-field col s6">
+            <label for="prenom">Nom Complet</label>
+            {% render_field form.fullname class+="validate" placeholder="NOM & PRENOM" autocomplete="off" name="prenom" id="prenom" %}
+            <div class="error"></div>
+            </div>
+
+            <!-- Champ Numéro de Téléphone !-->
+            <div class="input-field col s12">
+            <label for="numero">Numero de Téléphone</label>
+            {% render_field form.phone_number class+="datapicker validate" placeholder="ENTRER VOTRE NUMERO" autocomplete="off" name="numero" id="numero" %}
+            <div class="error"></div>
+            </div>
+
+            <!-- Champ email !-->
+            <div class="input-field col s12">
+            <label for="email">Email</label>
+            {% render_field form.email class+="validate" placeholder="ENTRER VOTRE E-MAIL" autocomplete="off" name="email" id="email" %}
+            <div class="error"></div>
+            </div>
+
+            <!-- Champ faculté !-->
+            <div class="input-field col s12">
+              <label for="faculte">Établissement</label>
+              {% render_field form.faculte class+="validate" placeholder="VOTRE LIEU D ETUDE" autocomplete="off" name="faculte" id="faculte" %}
+              <div class="error"></div>
+            </div>
+
+            <!-- Champ specialite !-->
+            <div class="input-field col s12">
+              <label for="specialite">Specialité d'étude</label>
+              {% render_field form.specialite class+="validate" placeholder="ENTRER SPECIALITE D ETUDE" autocomplete="off" name="specialite" id="specialite" %}
+              <div class="error"></div>
+            </div>
+
+            <!-- Champ Année d'étude !-->
+            <div class="input-field col s12">
+              <label for="year">Année d'étude</label>
+              <p></p>
+            </div>
+            <div class="input-field col s12">
+              {% render_field form.yearOfStudyOP class+="validate btn" autocomplete="off" name="year" id="year" %}
+              <div class="error"></div>
+            </div>
+
+            <!-- Champ Département !-->
+            <div class="input-field col s12">
+              <label for="dep">Département</label>
+              <p></p>
+            </div>
+            <div class="input-field col s12">
+              {% render_field form.departementOP class+="validate btn" autocomplete="off" name="dep" id="dep" %}
+              <div class="error"></div>
+            </div>
+
+            <!--Autre département-->
+            <div class="input-field col s12">
+              <label for="other">Autre Département</label>
+              {% render_field form.other autocomplete="off" name="other" id="other" %}
+              <div class="error"></div>
+            </div>
+
+            <!--Skills-->
+            <div class="input-field col s12">
+              <label for="skills">Quelles sont vos compétences ?</label>
+              {% render_field form.skills class+="validate" autocomplete="off" name="skills" id="skills" %}
+              <div class="error"></div>
+            </div>
+            
+            <!--Porteur de projet-->
+            <div class="input-field col s12">
+              <label for="pp">Porteur de Projet</label>
+              <p></p>
+            </div>
+            <div class="input-field col s12">
+              {% render_field form.ppOP class+="validate btn" autocomplete="off" name="pp" id="pp" %}
+              <div class="error"></div>
+            </div>
+
+            <!--Startup Idea-->
+            <div class="input-field col s12">
+              <label for="idea">Si vous avez déjà une idée de Startup, partage-la avec nous</label>
+              {% render_field form.startupIdea autocomplete="off" name="idea" id="idea" %}
+              <div class="error"></div>
+            </div>
+
+            <!--Equipe-->
+            <div class="input-field col s12">
+              <label for="equipe">Membres de votre équipe</label>
+              <p></p>
+            </div>
+            <div class="input-field col s12">
+              {% render_field form.equipeOP class+="validate btn" autocomplete="off" name="equipe" id="equipe" %}
+              <div class="error"></div>
+            </div>
+
+            <!-- Bouton envoyer !-->
+            <div class="input-field col s12">
+            <button class="btn waves-effect waves-light pulse" style="background-color: #f34414;" type="submit" name="action">Valider
+            <i class="material-icons right">send</i>
+            </button>
+          </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script  src="{% static '/registration/script1.js' %}"></script>
+  </body>
+</html>
+  
+
+
